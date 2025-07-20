@@ -6,8 +6,8 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('messages', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('chat_id')->constrained('chats')->cascadeOnDelete();
+            $table->uuid('id')->primary();
+            $table->foreignUuid('chat_id')->constrained('chats')->cascadeOnDelete();
             $table->string('sender_type');
             $table->unsignedBigInteger('sender_id');
             $table->text('message');
